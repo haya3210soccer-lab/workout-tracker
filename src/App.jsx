@@ -26,7 +26,7 @@ const m = String(d.getMonth() + 1).padStart(2, "0");
 
 const day = String(d.getDate()).padStart(2, "0");
 
-`return `${y}-${m}-${day}`;`
+return `${y}-${m}-${day}`;
 
 }
 
@@ -34,7 +34,7 @@ function shortLabel(key) {
 
 const [, m, d] = key.split("-");
 
-`return `${parseInt(m)}/${parseInt(d)}`;`
+return `${parseInt(m)}/${parseInt(d)}`;
 
 }
 
@@ -168,11 +168,9 @@ setLogs(next);
 
 try {
 
-const ok = await localStorage.setItem("workout-logs", JSON.stringify(next));
+localStorage.setItem("workout-logs", JSON.stringify(next));
 
-if (!ok) setError("保存に失敗しました");
-
-else setError(null);
+setError(null);
 
 } catch (e) {
 
@@ -188,11 +186,9 @@ setBenchLogs(next);
 
 try {
 
-const ok = await localStorage.setItem("bench-logs", JSON.stringify(next));
+localStorage.setItem("bench-logs", JSON.stringify(next));
 
-if (!ok) setError("保存に失敗しました");
-
-else setError(null);
+setError(null);
 
 } catch (e) {
 
@@ -274,11 +270,11 @@ return { ...p, last, diff };
 
 const cells = buildMonthGrid(viewDate);
 
-`const monthLabel = `${viewDate.getFullYear()}年 ${viewDate.getMonth() + 1}月`;`
+const monthLabel = `${viewDate.getFullYear()}年 ${viewDate.getMonth() + 1}月`;
 
 const selectedDateObj = new Date(selected + "T00:00:00");
 
-`const selectedLabel = `${selectedDateObj.getMonth() + 1}月${selectedDateObj.getDate()}日(${WEEKDAYS[selectedDateObj.getDay()]})`;`
+const selectedLabel = `${selectedDateObj.getMonth() + 1}月${selectedDateObj.getDate()}日(${WEEKDAYS[selectedDateObj.getDay()]})`;
 
 const selectedParts = logs[selected] || [];
 
@@ -300,7 +296,7 @@ return (
 
 <div className="min-h-full w-full bg-neutral-950 text-neutral-100 flex justify-center">
 
-` <style>{` `
+<style>{`
 
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
 
@@ -308,7 +304,7 @@ return (
 
         .font-body { font-family: 'Inter', sans-serif; }
 
-`      `}</style>`
+      `}</style>
 
 <div className="w-full max-w-md px-4 py-6 font-body">
 
@@ -356,7 +352,7 @@ return (
 
 {PARTS.map((p) => (
 
-`<div key={p.id} className={`flex-1 ${p.dot}`} />`
+<div key={p.id} className={`flex-1 ${p.dot}`} />
 
 ))}
 
@@ -376,7 +372,7 @@ return (
 
 <div key={p.id} className="flex flex-col items-center gap-1.5">
 
-`<span className={`w-2.5 h-2.5 rounded-full ${p.dot}`} />`
+<span className={`w-2.5 h-2.5 rounded-full ${p.dot}`} />
 
 <span className="text-xs text-neutral-400">{p.label}</span>
 
@@ -390,7 +386,7 @@ return (
 
 ) : (
 
-`<span className={`text-[11px] font-medium ${p.diff >= 5 ? "text-red-400" : "text-neutral-300"}`}>`
+<span className={`text-[11px] font-medium ${p.diff >= 5 ? "text-red-400" : "text-neutral-300"}`}>
 
 {p.diff}日前
 
@@ -478,15 +474,10 @@ key={idx}
 
 onClick={() => setSelected(key)}
 
-`className={`aspect-square rounded-lg flex flex-col items-center justify-center gap-0.5 transition`
-
+className={`aspect-square rounded-lg flex flex-col items-center justify-center gap-0.5 transition
                     ${cell.inMonth ? "text-neutral-200" : "text-neutral-700"}
-
                     ${isSelected ? "ring-2 ring-white bg-neutral-800" : "hover:bg-neutral-800"}
-
-                    ${isToday && !isSelected ? "bg-neutral-800/60" : ""}
-
-`                  `}`
+                    ${isToday && !isSelected ? "bg-neutral-800/60" : ""}`}
 
 >
 
@@ -498,7 +489,7 @@ onClick={() => setSelected(key)}
 
 const part = PARTS.find((p) => p.id === pid);
 
-`return <span key={pid} className={`w-1.5 h-1.5 rounded-full ${part.dot}`} />;`
+return <span key={pid} className={`w-1.5 h-1.5 rounded-full ${part.dot}`} />;
 
 })}
 
@@ -534,11 +525,8 @@ key={part.id}
 
 onClick={() => toggle(part.id)}
 
-`className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 transition active:scale-95`
-
-`                    ${active ? `${part.bgActive} ${part.textActive}` : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"}`
-
-`                  `}`
+className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 transition active:scale-95
+                    ${active ? `${part.bgActive} ${part.textActive}` : "bg-neutral-800 text-neutral-400 hover:bg-neutral-700"}` }
 
 >
 
@@ -646,7 +634,7 @@ labelStyle={{ color: "#a1a1aa" }}
 
 itemStyle={{ color: "#fff" }}
 
-`formatter={(v) => [`${v}kg`, "MAX"]}`
+formatter={(v) => [`${v}kg`, "MAX"]}
 
                   />
 
@@ -688,7 +676,7 @@ activeDot={{ r: 5 }}
 
 <div key={p.id} className="flex items-center gap-3">
 
-`<span className={`w-2.5 h-2.5 rounded-full ${p.dot} flex-shrink-0`} />`
+<span className={`w-2.5 h-2.5 rounded-full ${p.dot} flex-shrink-0`} />
 
 <span className="text-sm w-10">{p.label}</span>
 
@@ -696,9 +684,9 @@ activeDot={{ r: 5 }}
 
 <div
 
-`className={`h-full ${p.dot}`}`
+className={`h-full ${p.dot}`}
 
-`style={{ width: `${Math.min(p.count * 12, 100)}%` }}`
+style={{ width: `${Math.min(p.count * 12, 100)}%` }}
 
                   />
 
