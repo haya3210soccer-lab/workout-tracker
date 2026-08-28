@@ -1,0 +1,18 @@
+{
+  "name": "筋トレログ",
+  "short_name": "筋トレログ",
+  "description": "筋トレ記録をカレンダーで管理するトレーニングログ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
